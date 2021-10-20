@@ -5,3 +5,5 @@ This will also create a log file
 
 To run: python3 Contacts.py
 
+This program is used with the terminal box...
+
