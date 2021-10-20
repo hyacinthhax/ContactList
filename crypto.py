@@ -38,7 +38,8 @@ def new():
         fu = input("Contact Primary EMail:  ")
         fp = input("Contact Secondary EMail:  ")
         ex = input("Extra Details:  ")
-        pw = input("Do You Need a Password For this Person ONLY?(35)(Y/N): ").lower()
+        pw = input(
+            "Do You Need a Password For this Person ONLY?(35)(Y/N): ").lower()
         if pw == "y":
             generator()
             input("Enter To Encryption and End... THIS WILL CLEAR!!")
@@ -54,7 +55,7 @@ def new():
 
 
 def encryption():
-    a_key = "537FD141175C3862C3B0BB1509214DB5BCCBE642"
+    a_key = "YOURKEYIDHERE"
     with open(fn, "rb") as afile:
         text = afile.read()
         c = gpg.core.Context(armor=True)
@@ -66,7 +67,6 @@ def encryption():
         bfile.write(ciphertext)
         logger.info("User Made a New File: %s" % (fn))
     os.remove(fn)
-    
 
 
 def create():
