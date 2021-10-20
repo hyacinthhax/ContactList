@@ -7,9 +7,9 @@ from tkinter import *
 root = Tk()
 tItle = "Contact-List"
 root.title(tItle)
-root.geometry("400x700")
+root.geometry("400x290")
 c = gpg.Context()
-recipient = c.get_key("38DEA3AC606FFCCAEAEFEF1B5B91BC78766AD69A")
+recipient = c.get_key("YOURKEYIDHERE")
 
 restrictedfiles = []
 with open('restrictedfiles.txt') as f:
@@ -20,16 +20,19 @@ with open('restrictedfiles.txt') as f:
         restrictedfiles.append(line.strip('\n'))
 
 # List Box
+
+
 def refresh():
     global listBox
     files = []
     for file in os.listdir(os.getcwd()):
         if file not in restrictedfiles:
             files.append(file)
-    listBox = Listbox(root, width=40, height=33)
+    listBox = Listbox(root, width=40, height=10)
     listBox.grid(row=1, column=0, columnspan=5, rowspan=9)
     for item in files:
         listBox.insert(END, item)
+
 
 # Entry
 e = Entry(root, width=40, borderwidth=3)
@@ -39,6 +42,7 @@ decryptEntry.grid(row=15, column=0)
 # Label
 labelData = Label(root, text="Made by: Hyacinthhax")
 labelData.grid(row=20, column=0)
+
 
 def decryptFile():
     fn = str(listBox.get(ANCHOR))
@@ -50,12 +54,24 @@ def decryptFile():
 
 
 def delete():
-    os.remove(listBox.get(ANCHOR))
-    listBox.delete(ANCHOR)
+    cz = listBox.get(ANCHOR)
+    selection = input("Are You Sure? It's PERMANENT!(Y/n)  ")
+    if selection.lower() == "y":
+        os.remove(cz)
+        listBox.delete(ANCHOR)
+        logger.info("User Deleted %s" % (cz))
+
+    elif selection.lower() == "n":
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    else:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("Please Only Y or N...  ")
+        delete()
 
 
 def search():
-    pass
+    print("This Function Is Not Yet Available...  ")
 
 
 # Buttons
