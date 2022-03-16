@@ -3,7 +3,6 @@ import gpg
 import logging
 import random
 import os
-import gpg
 
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?></';|][=-()*&^%$#@!`~"
 
