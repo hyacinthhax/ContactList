@@ -66,6 +66,7 @@ def encryption():
     with open("{0}.asc".format(fn), "wb") as bfile:
         bfile.write(ciphertext)
         logger.info("User Made a New File: %s" % (fn))
+    os.system(f'shred {fn}')    
     os.remove(fn)
 
 
